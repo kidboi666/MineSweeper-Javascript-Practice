@@ -2,6 +2,18 @@ document.querySelector('#exec').addEventListener('click', function() {
   var hor = parseInt(document.querySelector('#hor').value);
   var ver = parseInt(document.querySelector('#ver').value);
   var mine = parseInt(document.querySelector('#mine').value);
+console.log(hor, ver, mine);
+  var numbers = Array(hor * ver)
+    .fill() // undefined로 채우고
+    .map(function(element, index) { // map 1:1로 짝지어주고
+      return index + 1; // index가 0부터 99까지니까 +1하면 1부터 99까지
+    });
+  var shuffle = [];
+  while (numbers.length > 80) {
+    var moveValue = numbers.splice(Math.floor(Math.random() * numbers.length), 1)[0]
+    shuffle.push(moveValue);
+  }
+  console.log(shuffle)
 
   var dataset = []; // 큰 틀인 빈배열 만들고
   var tbody = document.querySelector('#table tbody') // tbody를 선택하고
